@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Копилка</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d4af37">
+
+  <!-- Подключение стилей -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Копилка</h1>
+  </header>
+
+  <div class="container">
+    <!-- Форма добавления цели -->
+    <div class="add-goal">
+      <input type="text" id="goal-name" placeholder="Название цели">
+      <input type="text" id="goal-amount" placeholder="Сумма цели (₸)">
+      <button id="add-goal-btn">Добавить цель</button>
+    </div>
+
+    <!-- Список целей -->
+    <div class="goals" id="goals-container"></div>
+  </div>
+
+  <!-- Праздничные монетки и эффекты -->
+  <div id="celebration"></div>
+
+  <!-- Надпись при достижении цели -->
+  <div id="goal-complete">Поздравляем! Цель выполнена!</div>
+
+  <!-- Скрипт приложения -->
+  <script src="script.js"></script>
+
+  <!-- Регистрация service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(reg => console.log('Service Worker зарегистрирован', reg))
+          .catch(err => console.log('Ошибка регистрации SW', err));
+      });
+    }
+  </script>
+</body>
+</html>

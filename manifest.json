@@ -1,0 +1,21 @@
+{
+  "name": "Копилка",
+  "short_name": "Копилка",
+  "description": "Приложение для отслеживания целей и накоплений",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#12142a",
+  "theme_color": "#d4af37",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
