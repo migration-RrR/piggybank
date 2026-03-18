@@ -2,215 +2,196 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(180deg, #0b0c1b, #12142a);
+  background: linear-gradient(to bottom, #0b0c1b, #12142a);
   color: #f0e6d2;
   overflow-x: hidden;
 }
 
 header {
-  padding: 20px;
+  padding: 15px;
   text-align: center;
-  background: linear-gradient(90deg, #0b0c1b, #12142a);
+  background: #12142a;
   border-bottom: 2px solid #d4af37;
 }
 
 header h1 {
   margin: 0;
   color: #d4af37;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .container {
   max-width: 400px;
-  margin: 20px auto;
-  padding: 0 15px;
+  margin: 15px auto;
+  padding: 0 10px;
 }
 
 /* Форма добавления цели */
 .add-goal {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 25px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .add-goal input {
-  padding: 12px;
-  border-radius: 10px;
+  padding: 10px;
+  border-radius: 8px;
   border: 1px solid #555;
   background-color: #12142a;
   color: #f0e6d2;
-  font-size: 16px;
-}
-
-.add-goal input::placeholder {
-  color: #888;
+  font-size: 15px;
 }
 
 .add-goal button {
-  padding: 14px;
+  padding: 12px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #d4af37;
   color: #0b0c1b;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .add-goal button:hover {
   background-color: #f0e6d2;
-  color: #0b0c1b;
-  transform: scale(1.03);
 }
 
 /* Карточка цели */
 .goals {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .goal {
   background-color: #12142a;
   border: 1px solid #555;
-  border-radius: 15px;
-  padding: 15px;
+  border-radius: 12px;
+  padding: 12px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .goal h2 {
-  margin: 0 0 5px 0;
-  font-size: 18px;
+  margin: 0 0 4px 0;
+  font-size: 17px;
   color: #d4af37;
 }
 
 .goal-info {
-  font-size: 14px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  margin-bottom: 8px;
   color: #aaa;
 }
 
 /* Прогресс */
 .progress-bar {
   width: 100%;
-  height: 30px;
+  height: 25px;
   background-color: #0b0c1b;
-  border: 1px solid #555;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  position: relative;
-  box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
 }
 
 .progress-fill {
   height: 100%;
   width: 0%;
   background-color: #0077ff;
-  border-radius: 15px 0 0 15px;
+  border-radius: 12px 0 0 12px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 5px;
+  padding-right: 4px;
   color: #f0e6d2;
   font-weight: bold;
-  transition: width 0.8s ease, background-color 0.5s;
-  box-shadow: 0 0 10px #0077ff;
+  transition: width 0.5s ease, background-color 0.5s;
 }
 
-/* Пульсация прогресса */
 .progress-fill.near-complete {
   animation: pulseGold 1s infinite alternate;
 }
 
 @keyframes pulseGold {
-  0% { background-color: #0077ff; box-shadow: 0 0 10px #0077ff; }
-  50% { background-color: #d4af37; box-shadow: 0 0 20px #d4af37; }
-  100% { background-color: #0077ff; box-shadow: 0 0 10px #0077ff; }
+  0% { background-color: #0077ff; }
+  50% { background-color: #d4af37; }
+  100% { background-color: #0077ff; }
 }
 
 /* Действия цели */
 .goal-actions {
-  margin-top: 12px;
+  margin-top: 8px;
   display: flex;
-  gap: 10px;
+  gap: 6px;
 }
 
 .goal-actions input {
   flex: 1;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 8px;
+  border-radius: 6px;
   border: 1px solid #555;
   background-color: #12142a;
   color: #f0e6d2;
-  font-size: 14px;
-}
-
-.goal-actions input::placeholder {
-  color: #888;
+  font-size: 13px;
 }
 
 .goal-actions button {
-  padding: 10px 15px;
+  padding: 8px 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #d4af37;
   color: #0b0c1b;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .goal-actions button:hover {
   background-color: #f0e6d2;
-  color: #0b0c1b;
-  transform: scale(1.05);
 }
 
 /* История */
 .history {
-  margin-top: 12px;
-  max-height: 120px;
+  margin-top: 8px;
+  max-height: 100px;
   overflow-y: auto;
-  font-size: 13px;
+  font-size: 12px;
   color: #aaa;
 }
 
-/* Монетки */
+/* Монетки оптимизировано */
 .coin {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   background-color: #d4af37;
   border-radius: 50%;
   position: absolute;
-  top: -20px;
-  animation: fallCoin 1s forwards;
+  top: 0;
+  will-change: transform, opacity;
+  animation: fallCoin 0.8s forwards;
 }
 
 @keyframes fallCoin {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  40% { transform: translateY(30px) scale(1.3); }
-  60% { transform: translateY(15px) scale(1); }
-  100% { transform: translateY(var(--fall-height)) scale(1); opacity: 0; }
+  0% { transform: translate3d(0,0,0) scale(1); opacity:1; }
+  40% { transform: translate3d(0,20px,0) scale(1.2); }
+  60% { transform: translate3d(0,10px,0) scale(1); }
+  100% { transform: translate3d(0,20px,0) scale(1); opacity:0; }
 }
 
-/* Звёзды/искры */
+/* Искры */
 .spark {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background-color: #fff;
   position: absolute;
   border-radius: 50%;
-  opacity: 0.9;
-  animation: sparkAnim 1s ease-out forwards;
-  box-shadow: 0 0 5px #fff;
+  opacity: 0.8;
+  will-change: transform, opacity;
+  animation: sparkAnim 0.8s ease-out forwards;
 }
 
 @keyframes sparkAnim {
-  0% { transform: translate(0,0) scale(1); opacity:1; }
-  50% { transform: translate(var(--dx), var(--dy)) scale(1.5); opacity:0.7; }
-  100% { transform: translate(calc(var(--dx)*1.5), calc(var(--dy)*1.5)) scale(0); opacity:0; }
+  0% { transform: translate3d(0,0,0) scale(1); opacity:1; }
+  100% { transform: translate3d(var(--dx), var(--dy),0) scale(0); opacity:0; }
 }
 
 /* Celebration fullscreen */
@@ -228,51 +209,34 @@ header h1 {
 }
 
 .celebration-coin {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background-color:#d4af37;
   border-radius:50%;
   position:absolute;
-  animation:celebrate 2s ease forwards;
+  animation:celebrate 1.5s ease forwards;
 }
 
 @keyframes celebrate {
   0% { transform: translateY(0) rotate(0deg); opacity:1; }
-  50% { transform: translateY(-200px) rotate(180deg) scale(1.2); }
-  100% { transform: translateY(400px) rotate(360deg) scale(0.5); opacity:0; }
+  50% { transform: translateY(-150px) rotate(180deg) scale(1.1); }
+  100% { transform: translateY(300px) rotate(360deg) scale(0.5); opacity:0; }
 }
 
-/* Кнопка удаления цели */
-.delete-goal-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: #f05454;
-  font-size: 18px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.delete-goal-btn:hover {
-  transform: scale(1.2);
-}
-
-/* Надпись поздравления */
+/* Надпись при достижении цели */
 #goal-complete {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  font-size: 32px;
+  font-size: 28px;
   color: #28a745;
   font-weight: bold;
   text-align: center;
-  text-shadow: 0 0 20px #28a745, 0 0 40px #d4af37;
+  text-shadow: 0 0 15px #28a745, 0 0 30px #d4af37;
   z-index: 1001;
   pointer-events: none;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
   opacity: 0;
 }
 
@@ -281,9 +245,26 @@ header h1 {
   opacity: 1;
 }
 
+/* Кнопка удаления */
+.delete-goal-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: #f05454;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.delete-goal-btn:hover {
+  transform: scale(1.2);
+}
+
 /* Адаптив */
 @media (max-width: 450px) {
-  .container { margin: 15px; }
-  .progress-bar { height: 25px; }
-  .add-goal button { font-size: 16px; padding: 12px; }
+  .container { margin: 10px; }
+  .progress-bar { height: 22px; }
+  .add-goal button { font-size: 15px; padding: 10px; }
 }
