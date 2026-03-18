@@ -7,12 +7,12 @@ const completeText = document.getElementById('goal-complete');
 
 let goals = [];
 
-// Функция форматирования с точками
+// Формат числа с точками
 function formatAmount(num) {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-// Автоформат поля суммы главной формы
+// Автоформат ввода цели
 goalAmountInput.addEventListener('input', e => {
   let value = e.target.value.replace(/\D/g,'');
   if (value) e.target.value = formatAmount(value);
@@ -45,17 +45,17 @@ function createGoalElement(goal) {
   const addMoneyBtn = goalEl.querySelector('.add-money-btn');
   const historyEl = goalEl.querySelector('.history');
 
-  // Кнопка удаления
+  // Удаление цели
   const deleteBtn = document.createElement('button');
   deleteBtn.classList.add('delete-goal-btn');
   deleteBtn.innerHTML = '🗑️';
   goalEl.appendChild(deleteBtn);
 
   deleteBtn.addEventListener('click', () => {
-    goalEl.style.transition = 'opacity 0.5s, transform 0.5s';
+    goalEl.style.transition = 'opacity 0.4s, transform 0.4s';
     goalEl.style.opacity = '0';
     goalEl.style.transform = 'translateX(100%)';
-    setTimeout(() => goalEl.remove(), 500);
+    setTimeout(() => goalEl.remove(), 400);
     goals = goals.filter(g => g !== goal);
   });
 
@@ -66,14 +66,12 @@ function createGoalElement(goal) {
     collectedEl.textContent = formatAmount(goal.amount);
     remainingEl.textContent = formatAmount(Math.max(0, goal.target - goal.amount));
 
-    // Пульсация золотым при достижении ≥80%, но <100%
     if (percent >= 80 && percent < 100) {
       progressFill.classList.add('near-complete');
     } else {
       progressFill.classList.remove('near-complete');
     }
 
-    // Если цель достигнута
     if (percent >= 100) celebrateGoal(goalEl, progressFill);
   }
 
@@ -82,27 +80,24 @@ function createGoalElement(goal) {
     if (!amount || amount <= 0) return;
 
     const progressWidth = progressFill.parentElement.clientWidth;
-    const coinsCount = Math.min(8, Math.floor(amount / 10) + 1);
+    const coinsCount = Math.min(5, Math.floor(amount / 10) + 1); // меньше монет
 
     for (let i = 0; i < coinsCount; i++) {
-      // Монетки
       const coin = document.createElement('div');
       coin.classList.add('coin');
-      const startLeft = Math.random() * (progressWidth - 16);
+      const startLeft = Math.random() * (progressWidth - 14);
       coin.style.left = `${startLeft}px`;
-      coin.style.setProperty('--fall-height', `${progressFill.clientHeight}px`);
       goalEl.appendChild(coin);
-      setTimeout(() => coin.remove(), 1000);
+      setTimeout(() => coin.remove(), 800);
 
-      // Искры/звёзды
       const spark = document.createElement('div');
       spark.classList.add('spark');
       spark.style.left = `${startLeft}px`;
       spark.style.top = `0px`;
-      spark.style.setProperty('--dx', `${(Math.random()-0.5)*50}px`);
-      spark.style.setProperty('--dy', `${Math.random()*50}px`);
+      spark.style.setProperty('--dx', `${(Math.random()-0.5)*30}px`);
+      spark.style.setProperty('--dy', `${Math.random()*30}px`);
       goalEl.appendChild(spark);
-      setTimeout(() => spark.remove(), 1000);
+      setTimeout(() => spark.remove(), 800);
     }
 
     goal.amount += amount;
@@ -119,7 +114,6 @@ function createGoalElement(goal) {
     amountInput.value = '';
   });
 
-  // Автоформат поля суммы внутри карточки
   amountInput.addEventListener('input', e => {
     let value = e.target.value.replace(/\D/g,'');
     if (value) e.target.value = formatAmount(value);
@@ -143,25 +137,25 @@ addGoalBtn.addEventListener('click', () => {
   goalAmountInput.value = '';
 });
 
-// Функция праздника при достижении цели
+// Праздничная анимация при достижении цели
 function celebrateGoal(goalEl, progressFill) {
-  progressFill.style.backgroundColor = '#28a745'; // зелёный
+  progressFill.style.backgroundColor = '#28a745';
 
-  completeText.classList.add('show'); // показать надпись
+  completeText.classList.add('show');
 
   celebrationEl.classList.remove('hidden');
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 20; i++) { // меньше монет
     const coin = document.createElement('div');
     coin.classList.add('celebration-coin');
     coin.style.left = Math.random() * window.innerWidth + 'px';
     coin.style.top = Math.random() * window.innerHeight/2 + 'px';
     celebrationEl.appendChild(coin);
-    setTimeout(() => coin.remove(), 2000);
+    setTimeout(() => coin.remove(), 1500);
   }
 
   setTimeout(() => {
     completeText.classList.remove('show');
     celebrationEl.classList.add('hidden');
-  }, 2500);
+  }, 2000);
 }
